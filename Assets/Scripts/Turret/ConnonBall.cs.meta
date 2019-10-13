@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 000f5b9640e50a44e9036858ebd6d8c5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HitEffect_Enemy: {fileID: 535048854167987118, guid: d90aa7cc2dd847d498ac0440d323c8ca,
+      type: 3}
+  - HitEffect_Stone: {fileID: 8042849138329660775, guid: 980daec5d0375c24a9143f845798ae45,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
