@@ -63,8 +63,8 @@ public class MapGenerator : MonoBehaviour
 			int right = 0;
 			int up = Random.Range(1, y - 1);
 			#endregion
-			Destroy(block[right, up]);
-			Instantiate(SetPoint, block[right, up].transform.position, Quaternion.identity, transform);
+			Destroy(block[right, up]); //destory first block
+			
 
 			while (right + 1 < x) //till we reach the other edge
 			{
@@ -101,7 +101,9 @@ public class MapGenerator : MonoBehaviour
 
 			}
 
-			
+			Vector3 pos = block[right, up].transform.position;
+			pos.y = 0;
+			Instantiate(SetPoint, pos, Quaternion.identity, transform);
 			Reps--;
 		}
 	}

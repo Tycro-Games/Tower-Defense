@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb3ebf5e3253a647b0e2e890abe8668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RangeToRemove: 3
+  RangeToRemove: 10
 --- !u!65 &3156362623651770956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -56,5 +56,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3, y: 3, z: 3}
+  m_Size: {x: 10, y: 1, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
