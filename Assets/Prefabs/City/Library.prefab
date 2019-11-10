@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spell: {fileID: 11400000, guid: 1afd5e44122d2c0458dcd0857622e455, type: 2}
+  yellow: 0
 --- !u!1 &5077869811460530114
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SelectMenu: {fileID: 5077869811713688832}
+  anim: {fileID: 0}
 --- !u!23 &5077869812853542302
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class ToBuild : MonoBehaviour
 		RaycastHit hit;
 		if (Physics.Raycast(cam.position, cam.forward, out hit, Range, layer) && ToPlacer != null)
 		{
-
+			
 			if (Input.GetKeyDown(KeyCode.B) && !Placing)
 			{
 

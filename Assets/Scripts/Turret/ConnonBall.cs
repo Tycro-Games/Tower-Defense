@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ConnonBall : MonoBehaviour
 {
-	
+
 	public int MinDG = 5;
 	public int MaxDG = 10;
 	public GameObject HitEffect_Enemy;
@@ -14,7 +14,7 @@ public class ConnonBall : MonoBehaviour
 
 	private void Start()
 	{
-		
+
 
 
 		part = GetComponent<ParticleSystem>();
@@ -33,23 +33,24 @@ public class ConnonBall : MonoBehaviour
 
 		while (i < numCollisionEvents)
 		{
-
-			if (other.tag == "Enemy")
+			if (enemy != null)
 			{
-
-				GameObject enemyEffect = Instantiate(HitEffect_Enemy, collisionEvents[i].intersection, Quaternion.LookRotation(collisionEvents[i].normal));
-				enemyEffect.transform.SetParent(other.transform);
-				
-
-
-
-				enemy.TakeDamage(Random.Range(MinDG, MaxDG));
-				if (Slow)
+				if (enemy.enabled == true)
 				{
-					enemy.StartCoroutine(enemy.Slow());
-				}
+					GameObject enemyEffect = Instantiate(HitEffect_Enemy, collisionEvents[i].intersection, Quaternion.LookRotation(collisionEvents[i].normal));
+					enemyEffect.transform.SetParent(other.transform);
 
-				Destroy(gameObject);
+
+
+
+					enemy.TakeDamage(Random.Range(MinDG, MaxDG));
+					if (Slow)
+					{
+						enemy.StartCoroutine(enemy.Slow());
+					}
+
+					Destroy(gameObject);
+				}
 			}
 			else if (other.layer != 2)
 			{

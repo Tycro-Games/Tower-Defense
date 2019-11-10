@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+[ExecuteInEditMode]
 public class DisplaySpell : MonoBehaviour
 {
 
@@ -14,6 +15,7 @@ public class DisplaySpell : MonoBehaviour
 	public bool activate;
 	private void Start()
 	{
+		
 		text = GetComponentInChildren<TextMeshProUGUI>();
 		icon = GetComponent<Image>();
 		if (Remove != null)
@@ -47,14 +49,14 @@ public class DisplaySpell : MonoBehaviour
 
 			if (activate && spell != null)
 			{
-				icon.color = Color.red;
-
+				icon.color = Color.white;
+				
 				Debug.Log("selected" + name);
 
 			}
 			else
 			{
-				icon.color = Color.white;
+				icon.color = Color.black;
 
 			}
 		}

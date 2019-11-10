@@ -156,11 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce13dc931ceba9e49a6dd71e3bee5169, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 25
+  Damage: 100
   TimeBetweenAtacks: 1
   Speed_Rotations: 10
-  EnemyEffect: {fileID: 535048854167987118, guid: d90aa7cc2dd847d498ac0440d323c8ca,
-    type: 3}
   Muzzle_Flash: {fileID: 1743301284569550, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
     type: 3}
   pos_Muzzle: {fileID: 9123838562158540505}

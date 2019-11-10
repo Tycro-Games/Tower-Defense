@@ -12,7 +12,7 @@ public class Turret : MonoBehaviour
 	public float Speed_Rotations = 1f;
 	private Transform target;
 	[Header("Particles")]
-	
+
 	public GameObject Muzzle_Flash;
 	public Transform pos_Muzzle;
 	public GameObject connonBall;
@@ -76,23 +76,29 @@ public class Turret : MonoBehaviour
 	{
 
 		TimeBetweenAtacks -= Time.deltaTime;
+
 		foreach (EnemyAI AI in enemies)
 		{
 			FindTarget(AI);
-
 		}
 		if (target != null)
 		{
 			Rotate(target.position);
 		}
+		if (target != null)
+			if (target.GetComponent<NavMeshAgent>().enabled == false)
+			{
+				enemies.Remove(target.GetComponent<EnemyAI>());
+				target = null;
+			}
 	}
 	void FindTarget(EnemyAI AI)
 	{
-		if (AI != null && target == null)
+		if (AI != null && target == null && AI.enabled == true)
 		{
 			target = AI.transform;
 		}
-		if (AI != null && TimeBetweenAtacks <= 0)
+		if (AI != null && TimeBetweenAtacks <= 0 && AI.enabled == true)
 		{
 			TimeBetweenAtacks = PreviosTimeBetweenAtacks;
 			Shooting(AI);
@@ -116,7 +122,7 @@ public class Turret : MonoBehaviour
 
 			if (hit.transform.tag == "Enemy")
 			{
-				
+
 
 				GameObject CannonBall = Instantiate(connonBall, CannonBalltransform.position, transform.rotation);
 

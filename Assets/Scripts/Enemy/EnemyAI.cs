@@ -121,6 +121,7 @@ public class EnemyAI : MonoBehaviour
 			{
 				agent.SetDestination(CheckTargets().position);
 			}
+			if(CheckTargets()!=null)
 			if (CheckTargets().tag != "Points")
 			{
 				if (!Atacking && CheckTargets().GetComponent<StatsPlayer>() != null)
@@ -129,6 +130,11 @@ public class EnemyAI : MonoBehaviour
 					StartCoroutine(Atack(CheckTargets()));
 				}
 			}
+		}
+		if (Targets[0] == null)
+		{
+			Targets[0]= GameObject.FindGameObjectWithTag("Wall").transform;
+			Debug.Log("error dest");
 		}
 
 	}
@@ -184,7 +190,7 @@ public class EnemyAI : MonoBehaviour
 	}
 	public void Die()
 	{
-
+		gameObject.layer = 2;
 		InteractionWithGround.Sort(GetComponentInChildren<Transform>());
 		agent.enabled = false;
 		GetComponent<CapsuleCollider>().enabled = false;
