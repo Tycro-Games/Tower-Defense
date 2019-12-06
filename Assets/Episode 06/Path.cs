@@ -6,7 +6,7 @@ using UnityEngine;
 public class Path {
 
     [SerializeField, HideInInspector]
-    List<Vector2> points;
+    List<Vector3> points;
     [SerializeField, HideInInspector]
     bool isClosed;
     [SerializeField, HideInInspector]
@@ -14,11 +14,11 @@ public class Path {
 
     public Path(Vector3 centre)
     {
-        points = new List<Vector2>
+        points = new List<Vector3>
         {
             centre+Vector3.left,
-            centre+(Vector3.left+Vector3.forward)*.5f,
-            centre + (Vector3.right+Vector3.back)*.5f,
+            centre+(Vector3.left+Vector3.up)*.5f,
+            centre + (Vector3.right+Vector3.down)*.5f,
             centre + Vector3.right
         };
     }
@@ -114,7 +114,7 @@ public class Path {
 
     public void SplitSegment(Vector3 anchorPos, int segmentIndex)
     {
-        points.InsertRange(segmentIndex * 3 + 2, new Vector2[] { Vector2.zero, anchorPos, Vector2.zero });
+        points.InsertRange(segmentIndex * 3 + 2, new Vector3[] { Vector3.zero, anchorPos, Vector3.zero });
         if (autoSetControlPoints)
         {
             AutoSetAllAffectedControlPoints(segmentIndex * 3 + 3);
@@ -153,9 +153,9 @@ public class Path {
         return new Vector3[] { points[i * 3], points[i * 3 + 1], points[i * 3 + 2], points[LoopIndex(i * 3 + 3)] };
     }
 
-    public void MovePoint(int i, Vector2 pos)
+    public void MovePoint(int i, Vector3 pos)
     {
-        Vector2 deltaMove = pos - points[i];
+        Vector3 deltaMove = pos - points[i];
 
         if (i % 3 == 0 || !autoSetControlPoints) {
             points[i] = pos;
@@ -187,7 +187,7 @@ public class Path {
                     if (correspondingControlIndex >= 0 && correspondingControlIndex < points.Count || isClosed)
                     {
                         float dst = (points[LoopIndex(anchorIndex)] - points[LoopIndex(correspondingControlIndex)]).magnitude;
-                        Vector2 dir = (points[LoopIndex(anchorIndex)] - pos).normalized;
+                        Vector3 dir = (points[LoopIndex(anchorIndex)] - pos).normalized;
                         points[LoopIndex(correspondingControlIndex)] = points[LoopIndex(anchorIndex)] + dir * dst;
                     }
                 }
@@ -257,19 +257,19 @@ public class Path {
 
     void AutoSetAnchorControlPoints(int anchorIndex)
     {
-        Vector2 anchorPos = points[anchorIndex];
-        Vector2 dir = Vector2.zero;
+        Vector3 anchorPos = points[anchorIndex];
+        Vector3 dir = Vector3.zero;
         float[] neighbourDistances = new float[2];
 
         if (anchorIndex - 3 >= 0 || isClosed)
         {
-            Vector2 offset = points[LoopIndex(anchorIndex - 3)] - anchorPos;
+            Vector3 offset = points[LoopIndex(anchorIndex - 3)] - anchorPos;
             dir += offset.normalized;
             neighbourDistances[0] = offset.magnitude;
         }
 		if (anchorIndex + 3 >= 0 || isClosed)
 		{
-			Vector2 offset = points[LoopIndex(anchorIndex + 3)] - anchorPos;
+			Vector3 offset = points[LoopIndex(anchorIndex + 3)] - anchorPos;
 			dir -= offset.normalized;
 			neighbourDistances[1] = -offset.magnitude;
 		}

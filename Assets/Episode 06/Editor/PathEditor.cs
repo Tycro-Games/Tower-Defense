@@ -58,7 +58,7 @@ public class PathEditor : Editor {
     void Input()
     {
         Event guiEvent = Event.current;
-        Vector2 mousePos = HandleUtility.GUIPointToWorldRay(guiEvent.mousePosition).origin;
+        Vector3 mousePos = HandleUtility.GUIPointToWorldRay(guiEvent.mousePosition).origin;
 
         if (guiEvent.type == EventType.MouseDown && guiEvent.button == 0 && guiEvent.shift)
         {
